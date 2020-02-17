@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Simple_Foucs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rectangle" translatesAutoresizingMaskIntoConstraints="NO" id="bMb-fg-t6v">
+                                <rect key="frame" x="36" y="50" width="303" height="213.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="bMb-fg-t6v" secondAttribute="height" multiplier="169:119" id="SE0-qD-2K0"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Oval" translatesAutoresizingMaskIntoConstraints="NO" id="uEn-9m-HFR">
+                                <rect key="frame" x="66" y="364" width="243" height="243"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="uEn-9m-HFR" secondAttribute="height" multiplier="1:1" id="1cs-OM-708"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="zZ8-uW-jbK" appends="YES" id="1Zz-DS-Cmp"/>
+                                </connections>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Oval 2" translatesAutoresizingMaskIntoConstraints="NO" id="K6P-2r-Zx0">
+                                <rect key="frame" x="127.5" y="425.5" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="d5L-rw-xNp"/>
+                                    <constraint firstAttribute="height" constant="120" id="pZu-hh-WhV"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sFD-Bm-h2g">
+                                <rect key="frame" x="160.5" y="456" width="54" height="59"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="39"/>
+                                <state key="normal" title="OK">
+                                    <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="OK:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0ua-Zs-1NN"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AI6-jP-TVc">
+                                <rect key="frame" x="109.5" y="176.5" width="156" height="47"/>
+                                <fontDescription key="fontDescription" name="JCsmPC" family="PCMyungjo" pointSize="40"/>
+                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设置时间" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7L-rC-HrE">
+                                <rect key="frame" x="109.5" y="136" width="156" height="41"/>
+                                <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="29"/>
+                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.8696935571415324" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="a7L-rC-HrE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="AI6-jP-TVc" secondAttribute="leading" id="1S3-g8-xUs"/>
+                            <constraint firstItem="sFD-Bm-h2g" firstAttribute="centerY" secondItem="K6P-2r-Zx0" secondAttribute="centerY" id="472-s8-JXf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uEn-9m-HFR" secondAttribute="trailing" constant="66" id="4q6-8u-GmE"/>
+                            <constraint firstItem="a7L-rC-HrE" firstAttribute="centerY" secondItem="bMb-fg-t6v" secondAttribute="centerY" id="5KV-qL-BX3"/>
+                            <constraint firstItem="bMb-fg-t6v" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="7Ek-gq-CQT"/>
+                            <constraint firstItem="AI6-jP-TVc" firstAttribute="width" secondItem="a7L-rC-HrE" secondAttribute="width" id="7YU-xE-tmU"/>
+                            <constraint firstItem="uEn-9m-HFR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="66" id="8KE-9G-Li4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uEn-9m-HFR" secondAttribute="bottom" constant="60" id="F7P-ND-deQ"/>
+                            <constraint firstItem="AI6-jP-TVc" firstAttribute="firstBaseline" secondItem="a7L-rC-HrE" secondAttribute="baseline" constant="48" symbolType="layoutAnchor" id="Pjw-PC-4aV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bMb-fg-t6v" secondAttribute="trailing" constant="36" id="Pw7-e9-Kz6"/>
+                            <constraint firstItem="AI6-jP-TVc" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="RuR-jP-RNP"/>
+                            <constraint firstItem="K6P-2r-Zx0" firstAttribute="centerX" secondItem="uEn-9m-HFR" secondAttribute="centerX" id="XGL-7p-cdg"/>
+                            <constraint firstItem="bMb-fg-t6v" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="36" id="i09-PB-Xf3"/>
+                            <constraint firstItem="sFD-Bm-h2g" firstAttribute="centerX" secondItem="K6P-2r-Zx0" secondAttribute="centerX" id="lN5-1h-po2"/>
+                            <constraint firstItem="K6P-2r-Zx0" firstAttribute="centerY" secondItem="uEn-9m-HFR" secondAttribute="centerY" id="u1a-Ql-xXL"/>
+                            <constraint firstItem="AI6-jP-TVc" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="a7L-rC-HrE" secondAttribute="trailing" id="xz2-G3-GB5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="bigcirle" destination="uEn-9m-HFR" id="Bgg-xp-a5Z"/>
+                        <outlet property="screenInfo" destination="a7L-rC-HrE" id="Lq2-5y-hhT"/>
+                        <outlet property="timer" destination="AI6-jP-TVc" id="FuO-GG-SaB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" maximumNumberOfTouches="1" id="zZ8-uW-jbK">
+                    <connections>
+                        <action selector="settimer:" destination="BYZ-38-t0r" id="xpw-tR-8mM"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="136.23188405797103" y="133.69565217391306"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Oval" width="246" height="246"/>
+        <image name="Oval 2" width="109" height="109"/>
+        <image name="Rectangle" width="312" height="215"/>
+    </resources>
+</document>
