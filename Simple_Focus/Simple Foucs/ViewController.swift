@@ -9,7 +9,7 @@ import UIKit
 import AVFoundation
 import UserNotifications
 private let categoryid = "categoryid"
-public let restTime:Int = 5
+public let restTime:Int = 15
 class ViewController: UIViewController,UNUserNotificationCenterDelegate {
     //  导入后台组件
     var backgroundTask = BackgroundTask()
@@ -76,7 +76,7 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate {
                 withCompletionHandler completionHandler:
                     @escaping () -> Void) {
                     switch response.actionIdentifier{
-                    case "replayAction":
+                    case "replayAction":do {
                         
                         switch self.restIf {
                         case false:
@@ -87,13 +87,17 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate {
                             self.restIf = false;
                         }
                         self.isCounting = true
-                   
+                        print("用户不取消")
+                        break
+                        }
                     default:
-                         backgroundTask.stopBackgroundTask()
+                        
+                        print("用户取消")
+                        break
                     }
-                    
+                    completionHandler()
                 }
-                
+               
                 
 //                    do {
 //                    if self.restIf == false {self.inputTime = restTime}
@@ -108,11 +112,11 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate {
                 
                 
            
-                let stopAction = UNNotificationAction(identifier:"stopAction",title: "不用了",options: .destructive)
+                let stopAction = UNNotificationAction(identifier:"stopAction",title: "不用了",options:UNNotificationActionOptions(rawValue: 0))
                 let categroy = UNNotificationCategory(identifier: categoryid,actions: [replayAction, stopAction],intentIdentifiers: [],options: UNNotificationCategoryOptions(rawValue: 0))
-                UNUserNotificationCenter.current().setNotificationCategories([categroy])
+                    UNUserNotificationCenter.current().setNotificationCategories([categroy])
                 // 3.设置通知代理，用于检测交互点击方法
-                UNUserNotificationCenter.current().delegate = self;
+                UNUserNotificationCenter.current().delegate=self;
                 func send() {
                     //4. 设置本地通知相关的属性 // 应该使用UNNotificationContent的子类来进行设定
                     let content = UNMutableNotificationContent() //iOS 10
@@ -133,25 +137,26 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate {
                 screenInfo.text = "计时结束"
                 timer.text = "\(secondsToTimeString(seconds: newValue))"
                 send()
+            
                 //时间通知开始
-                let alert = UIAlertController(title:"计时结束",message:"\(messageText1)",preferredStyle:.alert)
-                let cancel=UIAlertAction(title:"不用了",style:.cancel)
-                let confirm=UIAlertAction(title:"\(messageText2)",style:.default){ (action)in
-                    if self.restIf == false {self.inputTime = restTime}
-                    else {self.inputTime = self.inputRecord}
-                    self.isCounting = true
-                    if self.restIf == false {self.restIf = true}
-                    else {self.restIf = false}
-                }
-                alert.addAction(cancel)
-                alert.addAction(confirm)
-                present(alert, animated: true, completion: nil)
+//                let alert = UIAlertController(title:"计时结束",message:"\(messageText1)",preferredStyle:.alert)
+//                let cancel=UIAlertAction(title:"不用了",style:.cancel)
+//                let confirm=UIAlertAction(title:"\(messageText2)",style:.default){ (action)in
+//                    if self.restIf == false {self.inputTime = restTime}
+//                    else {self.inputTime = self.inputRecord}
+//                    self.isCounting = true
+//                    if self.restIf == false {self.restIf = true}
+//                    else {self.restIf = false}
+//                }
+//                alert.addAction(cancel)
+//                alert.addAction(confirm)
+//                present(alert, animated: true, completion: nil)
                 //时间通知结束
                 isCounting = false
             }
         }
     }
-    var inputTime:Int = 7
+    var inputTime:Int = 9
     // 后台运行组件
     var countdownTimer: Timer?
     var isCounting = false {
