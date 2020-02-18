@@ -55,6 +55,7 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate {
         return inputTime
     }
     //大滚轮
+    
     var remainingSeconds: Int = 0{
         willSet{
             screenInfo.text = "剩余时间"
@@ -62,13 +63,51 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate {
             if newValue <= 0 {
                 var messageText1 = restIf ? "\n重复上一个任务？":"\n要不要休息5分钟？"
                 var messageText2 = restIf ? "重复上一个任务":"休息5分钟"
-                backgroundTask.stopBackgroundTask()
+                
+                
                 // 1. 注册通知权限
                 UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound, .carPlay]) { (success, error) in
                     print("iOS 10+ 通知授权" + (success ? "成功" : "失败"))
                 }
                 // 2. 设置交互
-                let replayAction = UNNotificationAction(identifier: "replayAction", title: "\(messageText2)", options:[])
+                let replayAction = UNNotificationAction(identifier: "replayAction", title: "\(messageText2)", options:UNNotificationActionOptions(rawValue: 0))
+                func userNotificationCenter(_ center: UNUserNotificationCenter,
+                didReceive response: UNNotificationResponse,
+                withCompletionHandler completionHandler:
+                    @escaping () -> Void) {
+                    switch response.actionIdentifier{
+                    case "replayAction":
+                        
+                        switch self.restIf {
+                        case false:
+                            self.inputTime = restTime;
+                            self.restIf = true;
+                        default:
+                            self.inputTime = self.inputRecord;
+                            self.restIf = false;
+                        }
+                        self.isCounting = true
+                   
+                    default:
+                         backgroundTask.stopBackgroundTask()
+                    }
+                    
+                }
+                
+                
+//                    do {
+//                    if self.restIf == false {self.inputTime = restTime}
+//                    else {self.inputTime = self.inputRecord}
+//                    self.isCounting = true
+//                    if self.restIf == false {self.restIf = true}
+//                    else {self.restIf = false}
+                    
+//                    }
+                    
+                   
+                
+                
+           
                 let stopAction = UNNotificationAction(identifier:"stopAction",title: "不用了",options: .destructive)
                 let categroy = UNNotificationCategory(identifier: categoryid,actions: [replayAction, stopAction],intentIdentifiers: [],options: UNNotificationCategoryOptions(rawValue: 0))
                 UNUserNotificationCenter.current().setNotificationCategories([categroy])
